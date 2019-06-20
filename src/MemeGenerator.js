@@ -1,6 +1,8 @@
 import React, { Component } from "react";
 import axios from "axios";
 
+import Form from "./Form";
+
 class MemeGenerator extends Component {
   constructor() {
     super();
@@ -38,28 +40,13 @@ class MemeGenerator extends Component {
   };
 
   render() {
-    const data = this.state.memes;
-
     return (
       <div>
-        <form className="meme-form" onSubmit={this.submitHandle}>
-          <input
-            placeholder="Top Text"
-            type="text"
-            onChange={this.handleChange}
-            value={this.state.topText}
-            name="topText"
-          />
-          <input
-            placeholder="Buttom Text"
-            type="text"
-            onChange={this.handleChange}
-            value={this.state.buttomText}
-            name="buttomText"
-          />
-
-          <button>Gen</button>
-        </form>
+        <Form
+          changed={this.handleChange}
+          tp={this.state}
+          submit={this.submitHandle}
+        />
         <div className="meme">
           <img src={this.state.randomImage} alt="" />
           <h2 className="top">{this.state.topText}</h2>
